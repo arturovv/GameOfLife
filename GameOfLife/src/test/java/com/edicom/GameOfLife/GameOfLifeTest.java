@@ -45,6 +45,20 @@ public class GameOfLifeTest {
 			{4, false},
 
 			};
+	}	
+	
+	@DataProvider
+	public static Object[][] dataCellProviderForMoreThanThree(){
+		
+		return new Object[][] {
+			{0, false},
+			{1, false},
+			{2, false},
+			{3, false},
+			{4, true},
+			{5, true},
+
+			};
 	}
 	
 	
@@ -75,6 +89,16 @@ public class GameOfLifeTest {
 	public void itShouldBeTrueIfItIsTwoOrThree(int neighbors, boolean expected) {
 		
 		boolean result = GameOfLife.isTwoOrThree(neighbors);
+		
+		Assert.assertEquals(expected, result);
+		
+	}
+	
+	@Test
+	@UseDataProvider("dataCellProviderForMoreThanThree")
+	public void itShouldBeTrueIfMoreThanThree(int neighbors, boolean expected) {
+		
+		boolean result = GameOfLife.isMoreThanThree(neighbors);
 		
 		Assert.assertEquals(expected, result);
 		
