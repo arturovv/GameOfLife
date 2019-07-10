@@ -30,6 +30,18 @@ public class GameOfLife {
 
 		return neighbors == 3;
 
+	}	
+	
+	public static boolean nextStep(boolean cell, int neighbors) {
+
+		if(isAlive(cell)) {
+			if(isLessThanTwo(neighbors)) return false;
+			if(isTwoOrThree(neighbors)) return true;
+			if(isMoreThanThree(neighbors)) return false;		
+		} else if (isThree(neighbors)) return true;
+		
+		return cell;
+		
 	}
 
 
