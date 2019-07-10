@@ -14,5 +14,12 @@ public class GameOfLife {
 		return neighbors < 2;
 		
 	}
+	
+	public static boolean isTwoOrThree(int neighbors) {
+		
+		return neighbors == 2 || neighbors == 3;
+		
+	}
+
 
 }

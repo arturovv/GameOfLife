@@ -74,7 +74,7 @@ public class GameOfLifeTest {
 	@UseDataProvider("dataCellProviderForTwoOrThree")
 	public void itShouldBeTrueIfItIsTwoOrThree(int neighbors, boolean expected) {
 		
-		boolean result = GameOfLife.IsTwoOrThree(neighbors);
+		boolean result = GameOfLife.isTwoOrThree(neighbors);
 		
 		Assert.assertEquals(expected, result);
 		
