@@ -8,5 +8,11 @@ public class GameOfLife {
 		return cell;
 		
 	}
+	
+	public static boolean isLessThanTwo(int neighbors) {
+		
+		return neighbors < 2;
+		
+	}
 
 }

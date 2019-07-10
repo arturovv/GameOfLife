@@ -26,10 +26,10 @@ public class GameOfLifeTest {
 	public static Object[][] dataCellProviderForLessThanTwoNeighbors(){
 		
 		return new Object[][] {
-			{0, false},
-			{1, false},
-			{2, true},
-			{3, true},
+			{0, true},
+			{1, true},
+			{2, false},
+			{3, false},
 			};
 	}
 	
@@ -49,9 +49,9 @@ public class GameOfLifeTest {
 	
 	@Test
 	@UseDataProvider("dataCellProviderForLessThanTwoNeighbors")
-	public void itShouldBeFalseIfLessThanTwoNeighbors(int neighbors, boolean expected) {
+	public void itShouldBeTrueIfLessThanTwoNeighbors(int neighbors, boolean expected) {
 		
-		boolean result = GameOfLife.lessThanTwo(neighbors);
+		boolean result = GameOfLife.isLessThanTwo(neighbors);
 		
 		Assert.assertEquals(expected, result);
 		
