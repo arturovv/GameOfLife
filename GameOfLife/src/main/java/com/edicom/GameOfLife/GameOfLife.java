@@ -25,5 +25,12 @@ public class GameOfLife {
 		return neighbors > 3;
 
 	}
+	
+	public static boolean isThree(int neighbors) {
+
+		return neighbors == 3;
+
+	}
+
 
 }
