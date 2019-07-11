@@ -56,7 +56,7 @@ public class GameOfLifeTest {
 				{ false, 5, false }, { false, 6, false }, { false, 7, false }, { false, 8, false }, };
 	}
 	
-	private static boolean [][] testWorld = {
+	private static boolean [][] testWorld1 = {
 			{false, false, false},
 			{true,false, false},
 			{false,true,false}
@@ -66,15 +66,39 @@ public class GameOfLifeTest {
 	public static Object[][] dataCellProviderForCountAliveNeighbors() {
 
 		return new Object[][] { 
-			{testWorld, 0, 0, 1}, 
-			{testWorld, 0, 1, 1}, 
-			{testWorld, 0, 2, 0}, 
-			{testWorld, 1, 0, 1}, 
-			{testWorld, 1, 1, 2}, 
-			{testWorld, 1, 2, 1}, 
-			{testWorld, 2, 0, 2}, 
-			{testWorld, 2, 1, 1}, 
-			{testWorld, 2, 2, 1}, 
+			{testWorld1, 0, 0, 1}, 
+			{testWorld1, 0, 1, 1}, 
+			{testWorld1, 0, 2, 0}, 
+			{testWorld1, 1, 0, 1}, 
+			{testWorld1, 1, 1, 2}, 
+			{testWorld1, 1, 2, 1}, 
+			{testWorld1, 2, 0, 2}, 
+			{testWorld1, 2, 1, 1}, 
+			{testWorld1, 2, 2, 1}, 
+
+		};
+	}
+	
+	private static boolean [][] testWorld2 = {
+			{false, false, false},
+			{true , true , false},
+			{false, true , false}
+	};
+	
+	
+	@DataProvider
+	public static Object[][] dataCellProviderForNextStatusOfACellInTheWorld() {
+
+		return new Object[][] { 
+			{testWorld2, 0, 0, false}, 
+			{testWorld2, 0, 1, false}, 
+			{testWorld2, 0, 2, false}, 
+			{testWorld2, 1, 0, true}, 
+			{testWorld2, 1, 1, true}, 
+			{testWorld2, 1, 2, false}, 
+			{testWorld2, 2, 0, true}, 
+			{testWorld2, 2, 1, true}, 
+			{testWorld2, 2, 2, false}, 
 
 		};
 	}
@@ -150,14 +174,14 @@ public class GameOfLifeTest {
 	}
 	
 	
-	/*@Test
-	@UseDataProvider("dataCellProviderForCountAliveNeighbors")
-	public void testNextStatusInTheWorld(boolean [][] world, int x, int y, boolean expected) {
+	@Test
+	@UseDataProvider("dataCellProviderForNextStatusOfACellInTheWorld")
+	public void testNextStatusOfACellInTheWorld(boolean [][] world, int x, int y, boolean expected) {
 
-		int result = GameOfLife.nextStatusInTheWorld(world, x, y);
+		boolean result = GameOfLife.nextStatusOfACellInTheWorld(world, x, y);
 
 		Assert.assertEquals(expected, result);
 
-	}*/
+	}
 
 }

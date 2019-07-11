@@ -57,7 +57,13 @@ public class GameOfLife {
 		
 		return alive;
 	}
-
+	
+	public static boolean nextStatusOfACellInTheWorld(boolean [][] world, int posx, int posy) {
+		
+		int neighbors = countAliveNeighbors(world, posx, posy);
+		
+		return nextStep(world[posx][posy], neighbors);
+	}
 
 
 }
