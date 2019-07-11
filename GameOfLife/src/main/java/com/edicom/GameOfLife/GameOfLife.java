@@ -46,6 +46,18 @@ public class GameOfLife {
 		return cell;
 		
 	}
+	
+	public static int countAliveNeighbors(boolean [][] world, int posx, int posy) {
+		
+		int alive = 0;
+		
+		for(int x=posx-1; x<=posx+1;x++)
+			for(int y=posy-1; y<=posy+1; y++)
+				if(x >= 0 && x < world.length && y >= 0 && y < world[x].length && !(x==posx && y==posy) && world[x][y] ) alive++;
+		
+		return alive;
+	}
+
 
 
 }

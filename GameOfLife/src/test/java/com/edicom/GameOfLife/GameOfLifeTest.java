@@ -141,12 +141,23 @@ public class GameOfLifeTest {
 	
 	@Test
 	@UseDataProvider("dataCellProviderForCountAliveNeighbors")
-	public void testCountAliveNeighbors(int x, int y, int expected) {
+	public void testCountAliveNeighbors(boolean [][] world, int x, int y, int expected) {
 
-		boolean result = GameOfLife.countAliveNeighbors(x, y);
+		int result = GameOfLife.countAliveNeighbors(world, x, y);
 
 		Assert.assertEquals(expected, result);
 
 	}
+	
+	
+	/*@Test
+	@UseDataProvider("dataCellProviderForCountAliveNeighbors")
+	public void testNextStatusInTheWorld(boolean [][] world, int x, int y, boolean expected) {
+
+		int result = GameOfLife.nextStatusInTheWorld(world, x, y);
+
+		Assert.assertEquals(expected, result);
+
+	}*/
 
 }
