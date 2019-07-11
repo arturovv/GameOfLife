@@ -55,6 +55,29 @@ public class GameOfLifeTest {
 				{ false, 0, false }, { false, 1, false }, { false, 2, false }, { false, 3, true }, { false, 4, false },
 				{ false, 5, false }, { false, 6, false }, { false, 7, false }, { false, 8, false }, };
 	}
+	
+	private static boolean [][] testWorld = {
+			{false, false, false},
+			{true,false, false},
+			{false,true,false}
+	};
+	
+	@DataProvider
+	public static Object[][] dataCellProviderForCountAliveNeighbors() {
+
+		return new Object[][] { 
+			{testWorld, 0, 0, 1}, 
+			{testWorld, 0, 1, 1}, 
+			{testWorld, 0, 2, 0}, 
+			{testWorld, 1, 0, 1}, 
+			{testWorld, 1, 1, 2}, 
+			{testWorld, 1, 2, 1}, 
+			{testWorld, 2, 0, 2}, 
+			{testWorld, 2, 1, 1}, 
+			{testWorld, 2, 2, 1}, 
+
+		};
+	}
 
 	@Test
 	@UseDataProvider("dataCellProviderForAlive")
@@ -111,6 +134,16 @@ public class GameOfLifeTest {
 	public void testNextStep(boolean cell, int neighbors, boolean expected) {
 
 		boolean result = GameOfLife.nextStep(cell, neighbors);
+
+		Assert.assertEquals(expected, result);
+
+	}
+	
+	@Test
+	@UseDataProvider("dataCellProviderForCountAliveNeighbors")
+	public void testCountAliveNeighbors(int x, int y, int expected) {
+
+		boolean result = GameOfLife.countAliveNeighbors(x, y);
 
 		Assert.assertEquals(expected, result);
 
