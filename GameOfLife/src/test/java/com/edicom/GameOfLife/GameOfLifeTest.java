@@ -102,6 +102,30 @@ public class GameOfLifeTest {
 
 		};
 	}
+	
+	private static boolean [][] testWorld3 = {
+			{false, false, false, true },
+			{true , true , false, false},
+			{false, true , false, true },
+			{false, true , false, true }
+	};
+	
+	private static boolean [][] testWorld4 = {
+			{false, false, false, false},
+			{true , true , false, false},
+			{false, true , false, false},
+			{false, false , false, false}
+	};
+	
+	
+	
+	@DataProvider
+	public static Object[][] dataCellProviderForNextWorld() {
+
+		return new Object[][] { 
+			{testWorld3,testWorld4}, 			
+		};
+	}
 
 	@Test
 	@UseDataProvider("dataCellProviderForAlive")

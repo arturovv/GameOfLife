@@ -64,6 +64,17 @@ public class GameOfLife {
 		
 		return nextStep(world[posx][posy], neighbors);
 	}
+	
+	public static boolean [][] nextWorld(boolean [][] world) {
+		
+		boolean [][] returnWorld = new boolean[world.length][world[0].length];
+		
+		for(int x=0; x<world.length; x++)
+			for(int y=0; y<world[x].length; y++) 
+				returnWorld[x][y] = nextStatusOfACellInTheWorld(world, x, y);	
+		
+		return returnWorld;
+	}
 
 
 }
