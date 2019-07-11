@@ -183,5 +183,17 @@ public class GameOfLifeTest {
 		Assert.assertEquals(expected, result);
 
 	}
+	
+	
+	@Test
+	@UseDataProvider("dataCellProviderForNextWorld")
+	public void testNextWorld(boolean [][] world, boolean [][] expected) {
+
+		boolean [][] result = GameOfLife.nextWorld(world);
+
+		Assert.assertEquals(expected, result);
+
+	}
+	
 
 }
