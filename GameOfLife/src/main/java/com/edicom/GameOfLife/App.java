@@ -15,38 +15,43 @@ public class App
     	int height = Integer.valueOf(sc.nextLine()).intValue();
         System.out.println( "Width: " );
     	int width = Integer.valueOf(sc.nextLine()).intValue();
+   	
     	
-    	boolean [][] world = new boolean[height][width];
+    	String entrada = "";
     	
-		System.out.println("Valores random?");
-    	int random = Integer.valueOf(sc.nextLine()).intValue();
-
+		while(!entrada.equals("exit")) {
+			
+	    	boolean [][] world = new boolean[height][width];
     	
-    	for(int i=0; i<height; i++)
-    		for(int y=0; y<width; y++) {
+			System.out.println("Valores random?");
+			int random = Integer.valueOf(sc.nextLine()).intValue();
+    	
+			for(int i=0; i<height; i++)
+				for(int y=0; y<width; y++) {
     			
-    			if (random == 1) world[i][y] = Math.random() > 0.5 ? true : false;
-    			else {
-    				System.out.println( "Celda (" + i +", " + y +"): ");
-    				int cell = Integer.valueOf(sc.nextLine()).intValue();
-    				world[i][y] = cell == 1 ? true : false;
-    				printWorld(world);
-    			}
-    		}
+					if (random == 1) world[i][y] = Math.random() > 0.5 ? true : false;
+					else {
+						System.out.println( "Celda (" + i +", " + y +"): ");
+						int cell = Integer.valueOf(sc.nextLine()).intValue();
+						world[i][y] = cell == 1 ? true : false;
+						printWorld(world);
+					}
+				}
     	
-    	if (random == 1) printWorld(world);
+			if (random == 1) printWorld(world);
 
-    	System.out.println("Pulsa Enter para empezar. Exit para salir.");
+			System.out.println("Pulsa Enter para empezar. Exit para salir. Reset para reinicar.");
     	
-    	String entrada = sc.nextLine();
+			entrada = sc.nextLine();
     	
-    	while(!entrada.equals("exit")) {
+			while(!entrada.equals("exit") && !entrada.equals("reset")) {
     		
-	    	world = GameOfLife.nextWorld(world);
-	    	printWorld(world);
-	    	entrada = sc.nextLine();
+				world = GameOfLife.nextWorld(world);
+				printWorld(world);
+				entrada = sc.nextLine();
     		
-    	}
+			}
+		}
     	
     	System.out.println("Adiós");
 
